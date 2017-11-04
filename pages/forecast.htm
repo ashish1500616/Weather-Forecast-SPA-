@@ -1,7 +1,7 @@
-<h1>This Is Forecast For {{city}}</h1>
-<div ng-repeat="w in weatherResult.list">
+<h1>This Is Forecast For {{city}} Upto {{days}} days.</h1>
+<div >
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6" ng-repeat="w in weatherResult.list">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
