@@ -22,7 +22,7 @@ weatherApp.controller('mainController', ['$scope', '$log', 'cityService', functi
     $scope.city = cityService.city;
 
 }]);
-weatherApp.controller('secondController', ['$scope', '$log', '$resource', 'cityService', function($scope, $log, $resource, cityService) {
+weatherApp.controller('secondController', ['$scope', '$log', '$resource', 'cityService',function($scope, $log, $resource, cityService) {
     $scope.name = 'Forecast';
     $scope.city = cityService.city;
     $scope.weatherAPI = $resource("https://api.openweathermap.org/data/2.5/forecast/daily", { callback: "JSON_CALLBACK" }, { get: { method: "JSONP" } });
@@ -33,8 +33,9 @@ weatherApp.controller('secondController', ['$scope', '$log', '$resource', 'cityS
         return Math.round((1.8 * (degK - 273)) + 32);
     };
 
-
-
+    $scope.convertToDate = function(dt) {
+        return new Date(dt *1000);
+    };
     $scope.$watch('city', function() {
         cityService.city = $scope.city;
     });
